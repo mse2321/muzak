@@ -11,6 +11,7 @@ const Header = () => {
     const introMessage2 = ' and artist information from ';
     const spotify = 'Spotify';
     const discogs = 'Discogs';
+    console.log(state.currentSong);
 
     return <header>
                 <Container fluid className="header_container">
@@ -30,7 +31,7 @@ const Header = () => {
                     </Row>
                 </Container>
                 {/* Putting the audio tag here in order to persist outside of the sidebar */}
-                <audio id="music" src={ state.currentSong?.preview_url } />
+                <audio id="music" src={ state.currentSong?.href } />
             </header>
 }
 

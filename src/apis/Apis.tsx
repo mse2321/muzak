@@ -4,9 +4,13 @@ import * as actions from '../actions/actions';
 import { IState } from '../interfaces';
 import _ from 'lodash';
 
-const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
-const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
-const apiClient = process.env.REACT_APP_APICLIENTID;
+//const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
+//const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
+//const apiClient = process.env.REACT_APP_APICLIENTID;
+const apiKeyDiscogs = 'FrEJfCEeKbnHxmsEAvJA';
+const apiKeySecretDiscogs = 'OcuHHDfOEJrlKlNaLVAFCjBLzQqPfmvq';
+const apiSecretSpotify = '4ef7126ce4144dadad88b496f3849e00';
+const apiClient = '8dfc36be7d894e129dbcb997696ad628';
 
 // Spotify APIs
 export const getAuth = async (dispatch: Function) => {
@@ -86,9 +90,10 @@ export const getSongs = async (id: string, state: IState, dispatch: Function) =>
             const allTracks = response.data.tracks;
 
             // need to only include tracks with preview_urls
-            const tracksWithPreviews = allTracks.filter((track: CurrentSong) => !_.isEmpty(track?.preview_url));
+            const tracksWithPreviews = allTracks.filter((track: CurrentSong) => !_.isEmpty(track?.href));
 
             dispatch(actions.setSongs(tracksWithPreviews));
+            console.log(allTracks);
         } catch (error) {
             dispatch(actions.toggleErrorView(true));
             console.error(error);
@@ -134,7 +139,7 @@ const getArtistDetails = async (id: string, dispatch: Function) => {
 
 export const getArtistDiscogs = async (artistName: string, dispatch: Function) => {
     const url = "https://api.discogs.com/database/search?";
-    const params = 'q=' + artistName + '&type=artist&token=' + apiKeyDiscogs;
+    const params = 'q=' + artistName + '&type=artist&key=' + apiKeyDiscogs + '&secret=' + apiKeySecretDiscogs;
     const endPoint = url + params;
 
     try {

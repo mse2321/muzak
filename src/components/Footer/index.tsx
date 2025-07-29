@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => {
-    const copyrightName = 'ME Innovation';
+    const copyrightName = ' Marcus Eubanks';
     const newDate = new Date()
 	const year = newDate.getFullYear();
 
@@ -9,7 +9,7 @@ const Footer = () => {
         <footer>
             <small>
                 &copy;{year} 
-                <a href="http://www.meinnovation.net" target="_blank" rel="noopener noreferrer">{copyrightName}</a>
+                {copyrightName}
             </small>
         </footer>
     );
