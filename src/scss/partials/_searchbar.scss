@@ -6,6 +6,8 @@
 	button {
 		width: $base-unit * 6;
 		border-radius: 0 $base-unit * 0.5 $base-unit * 0.5 0; 
+		font-weight: bold;
+		color: $black;
 		span {
 			font-size: $base-font-unit * 2;
 		}

@@ -20,6 +20,7 @@ const Song = (props: any) => {
         dispatch(actions.setSongIndex(index));
         dispatch(actions.toggleDisplayNoTracksMessage(false));
         dispatch(actions.togglePlayer(true));
+        console.log(songData);
     }
 
     return (
